@@ -2,14 +2,15 @@ const Sauce = require('../models/sauce');
 
 exports.createSauce = (req, res, next) => {
     const sauce = new Sauce({
-        userId: req.body.user_id,
+        userId: req.body.userId,
         name: req.body.name,
         manufacturer: req.body.manufacturer,
         description: req.body.description,
-        imageUrl: req.body.imageUrl,
         mainPepper: req.body.mainPepper,
+        imageUrl: req.body.imageUrl,
         heat: req.body.heat,
     });
+    console.dir(sauce);
     sauce.save()
         .then(() => res.status(201).json({message: "Objet enregistré"}))
         .catch(error => res.status(400).json({error}));
