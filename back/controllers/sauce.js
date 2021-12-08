@@ -6,7 +6,7 @@ exports.createSauce = (req, res, next) => {
     delete sauceObject._id;
     const sauce = new Sauce({
         ...sauceObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename};`,
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     });
     sauce.save()
         .then(() => res.status(201).json({message: "Objet enregistré"}))
@@ -51,6 +51,9 @@ exports.getAllSauces = (req, res, next) => {
 
 exports.like = (req, res, next) => {
     const like = req.body.like;
+
+    //AJOUTER UN LIKE OU UN DISLIKE
+
     if (like === 1) {
         Sauce.updateOne({_id: req.params.id}, {
             $push: {usersLiked: req.body.userId},
@@ -67,6 +70,9 @@ exports.like = (req, res, next) => {
             .then(() => {res.status(200).json({message: 'Je n\'aime pas !'})})
             .catch((error) => res.status(400).json({error}));
     };
+
+    //RETIRER SON LIKE OU SON DISLIKE
+
     if (like === 0) {
     Sauce.findOne({_id: req.params.id})
         .then((sauce) => {

@@ -1,11 +1,13 @@
 const multer = require('multer');
 
+//PERMET DE RECUPERER LE FORMAT D'UNE IMAGE
 const MIME_TYPES = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
   'image/png': 'png'
 };
 
+//RENOMME ET ENREGISTRE L'IMAGE DANS LE DOSSIER "IMAGES"
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, 'images');
