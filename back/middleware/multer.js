@@ -1,3 +1,4 @@
+//Permet de gérer les fichiers entrants dans les requêtes HTTP
 const multer = require('multer');
 
 //PERMET DE RECUPERER LE FORMAT D'UNE IMAGE

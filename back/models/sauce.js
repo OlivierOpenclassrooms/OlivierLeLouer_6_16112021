@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//Utilisation de la méthode "Schema" de "Mongoose" qui contient toues les champs souhaités et leur type
+
 const sauceSchema = mongoose.Schema({
   userId: {type: String, required: true },
   name: {type: String, required: true },
@@ -14,4 +16,6 @@ const sauceSchema = mongoose.Schema({
   usersDisliked: {type: [String]},
 });
 
+
+//Exportation du Schema pour le rendre disponible pour l'application "Express"
 module.exports = mongoose.model('Sauce', sauceSchema);

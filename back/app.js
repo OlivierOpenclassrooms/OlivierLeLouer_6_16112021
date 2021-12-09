@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
+//Permet d'accéder au path du serveur
 const path = require('path');
 
 const sauceRoutes = require('./routes/sauce');
@@ -26,8 +28,10 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
+//Gère la ressource "images" de manière statique à chaque fois qu'elle reçoit une requête vers la route "/images"
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+//Route de base commune aux sauces ou à l'authentification
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
 
