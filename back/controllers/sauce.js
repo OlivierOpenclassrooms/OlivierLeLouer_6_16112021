@@ -1,8 +1,7 @@
 const Sauce = require('../models/sauce');
 
-//Permet de midifier le système de fichiers
+//Permet de modifier le système de fichiers
 const fs = require('fs');
-
 
 
 exports.createSauce = (req, res, next) => {
@@ -16,7 +15,7 @@ exports.createSauce = (req, res, next) => {
         //Utilisation de l'URL complète de l'image
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     });
-    //Enregristre dans la base de données
+    //Enregistre dans la base de données
     sauce.save()
         .then(() => res.status(201).json({message: "Objet enregistré"}))
         .catch(error => res.status(400).json({error}));
