@@ -35,14 +35,18 @@ exports.modifySauce = (req, res, next) => {
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         } : { ...req.body };
         //Crée une instance "Sauce" à partir de "sauceObject"
-        if (sauceObject.userId == userId) {
+    Sauce.findOne({ _id: req.params.id })
+      .then(sauce => {
+          if (sauce.userId == userId) {
             Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
                 .then(() => res.status(200).json({ message: 'Objet modifié !'}))
                 .catch(error => res.status(400).json({ error }));
         } else {
             res.status(401).json({ message: 'Opération non autorisée !'});
-    }
+        }
+    }) .catch(error => res.status(500).json({ error }));
 };
+
 
 exports.deleteSauce = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
