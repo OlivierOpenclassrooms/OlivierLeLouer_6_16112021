@@ -1,4 +1,23 @@
-# Piiquante
+# Piiquante #
+
+## Objectif du projet ##
+
+Construction d'une API REST sécurisée avec Node.js et le framework Express pour l'application d'avis gastronomiques Piiquante.
+
+## Exigences de sécurité ##
+
+● Le mot de passe de l'utilisateur est haché.
+● L'authentification est renforcée sur toutes les routes sauce requises.
+● Les adresses électroniques dans la base de données sont uniques et le
+plugin Mongoose unique validator est utilisé pour garantir leur unicité et signaler
+les erreurs.
+● La sécurité de la base de données MongoDB (à partir d'un service tel que
+MongoDB Atlas) ne doit pas empêcher l'application de se lancer sur la
+machine d'un utilisateur.
+● Le plugin Mongoose assure la remontée des erreurs issues de la base
+de données. 
+● Le contenu du dossier 'images' n'est pas téléchargé sur GitHub.
+
 
 ### Back end Prerequisites ###
 
